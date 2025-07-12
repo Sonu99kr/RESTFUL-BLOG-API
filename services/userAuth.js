@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const User = require("../models/userSchema")
 
 const secret = process.env.JWT_SECRET;
 
@@ -9,16 +10,20 @@ if(!secret){
 
 function setUser(user){
     return jwt.sign({
-        _id: user.id,
+        _id: user._id,
         email: user.email,
     }, 
-    secret);
+    secret,
+    {expiresIn: "7d"}
+);
 }
 
-function getUser(token){
+async function getUser(token){
     if(!token)return null;
     try{
-        return jwt.verify(token, secret);
+        const decode =  jwt.verify(token, secret);
+        const user = await User.findById(decode._id);
+        return user;
     }catch (error){
         console.error("JWT Verification Error!");
         return null;

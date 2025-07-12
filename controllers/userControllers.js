@@ -5,7 +5,7 @@ async function handleUserRegister(req, res){
     const {name, email, password} = req.body;
 
     const existingUser = await User.findOne({ email });
-    if(existingUser)res.status(400).send("Email already registered");
+    if(existingUser)return res.status(400).send("Email already registered");
 
     await User.create({
         name, 
