@@ -1,5 +1,11 @@
-const express = require("express")
-const {createPost, getAllPosts, getPostById, updatePost, deletePost} = require("../controllers/postControllers");
+const express = require("express");
+const {
+  createPost,
+  getAllPosts,
+  getPostById,
+  updatePost,
+  deletePost,
+} = require("../controllers/postControllers");
 
 const router = express.Router();
 
