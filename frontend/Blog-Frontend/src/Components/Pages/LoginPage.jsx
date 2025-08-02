@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
-  const [password, setPassoword] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,7 +15,7 @@ function LoginPage() {
         password,
       });
 
-      localStorage.setItem("toekn", res.data.token);
+      localStorage.setItem("token", res.data.token);
       navigate("/");
     } catch (err) {
       console.error(
@@ -44,13 +45,13 @@ function LoginPage() {
             type="password"
             placeholder="password"
             value={password}
-            onChange={(e) => setPassoword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit">SignIn</button>
+        <button type="submit">Sign In</button>
         <p>
-          Don't have a Account? <a href="/register">Register Now</a>
+          Don't have an account? <a href="/register">Register Now</a>
         </p>
       </form>
     </>
