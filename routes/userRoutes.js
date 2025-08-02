@@ -6,15 +6,15 @@ const {
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  return res.render("home");
+  return res.json({ message: "Welcome to the Blog API Home Route" });
 });
 
 router.get("/login", (req, res) => {
-  return res.render("login");
+  return res.json({ message: "Welcome to the login page" });
 });
 
 router.get("/register", (req, res) => {
-  return res.render("register");
+  return res.json({ message: "Welcome to the register page" });
 });
 
 router.post("/login", handleUserLogin);
