@@ -9,9 +9,6 @@ const PORT = process.env.PORT;
 
 connectToDB();
 
-app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/users", userRoutes);
