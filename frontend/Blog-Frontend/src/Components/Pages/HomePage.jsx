@@ -1,10 +1,11 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 function HomePage() {
   return (
-    <div>
-      <p>this is home page</p>
-    </div>
+    <>
+      <Navbar />
+    </>
   );
 }
 
